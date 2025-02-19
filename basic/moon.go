@@ -1434,7 +1434,7 @@ func GetMoonRiseTime(JD, Lon, Lat, TZ, ZS, HEI float64) float64 {
 	ntz := TZ
 	TZ = Lon / 15
 	var An, tms float64 = 0, 0
-	JDZ := math.Floor(JD) + 0.5
+	//JDZ := math.Floor(JD) + 0.5
 	JD = math.Floor(JD) + 0.5 - ntz/24 + TZ/24.0 //求0时JDE
 	JD1 := JD
 	moonheight := MoonHeight(JD, Lon, Lat, TZ) //求此时月亮高度
@@ -1504,11 +1504,12 @@ func GetMoonRiseTime(JD, Lon, Lat, TZ, ZS, HEI float64) float64 {
 	}
 	JD1 = JD1 - TZ/24 + ntz/24
 
-	if JD1 > JDZ+1 || JD1 < JDZ {
-		return -3 //明日
-	} else {
-		return JD1
-	}
+	//if JD1 > JDZ+1 || JD1 < JDZ {
+	//	return -3 //明日
+	//} else {
+	//	return JD1
+	//}
+    return JD1
 }
 
 func GetMoonDownTime(JD, Lon, Lat, TZ, ZS, HEI float64) float64 {
